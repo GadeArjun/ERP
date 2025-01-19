@@ -6,7 +6,7 @@ import axios from "axios";
 const DoubtForum = () => {
   const name = localStorage.getItem("name");
 
-  const socket = io("http://localhost:8081");
+  const socket = io(process.env.REACT_APP_SOCKET_URL);
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
   const userId = name;
