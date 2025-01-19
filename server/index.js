@@ -1,6 +1,6 @@
 const express = require("express");
 require("dotenv").config();
-const cors = require("cors");
+// const cors = require("cors");
 const path = require("path");
 const { mongooseConnection } = require("./database/db");
 const { collegeAdminRouter } = require("./routes/collegeAdmin");
@@ -20,7 +20,10 @@ const { quetionRouter } = require("./routes/quetion");
 const server = express();
 
 server.use(express.json());
-server.use(cors());
+// server.use(cors());
+
+
+server.use(express.static(path.join(__dirname, "public", "build")));
 
 server.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
@@ -37,6 +40,18 @@ server.use(quizScheduleRouter);
 server.use(studentAttendanceRouter);
 server.use(teacherAttendanceRouter);
 server.use(quetionRouter);
+
+
+server.use("*", (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "public", "build", "index.html"));
+  } catch (err) {
+    console.log(err);
+    res.json(err)
+
+
+  }
+})
 
 mongooseConnection();
 
