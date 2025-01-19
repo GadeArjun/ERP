@@ -25,13 +25,13 @@ function CollegeAdminSigninForm() {
     e.preventDefault();
 
     try {
-      console.log(formData);
+      // console.log(formData);
       
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/college-admin-login`,
         formData
       );
-      console.log(formData);
+      // console.log(formData);
 
       if (+response.status === 200) {
         alert("Login successful!");
@@ -43,7 +43,7 @@ function CollegeAdminSigninForm() {
 
         localStorage.setItem("role", response?.data?.collegeAdmin?.role);
         localStorage.setItem("college_admin_token", response?.data?.token);
-        console.log(response?.data?.token);
+        // console.log(response?.data?.token);
 
         navigate("/dashboard");
       }

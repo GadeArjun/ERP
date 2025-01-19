@@ -32,7 +32,7 @@ function TeacherDashboard() {
             params: { teacherAdminId, class: subjectId.class },
           }
         );
-        console.log(response);
+        // console.log(response);
         setStudetnData(response.data);
       } catch (err) {
         console.log(err);
@@ -45,7 +45,7 @@ function TeacherDashboard() {
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
-        console.log(subjectId._id);
+        // console.log(subjectId._id);
 
         const response = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/get-quizzes`,
@@ -54,7 +54,7 @@ function TeacherDashboard() {
           }
         );
 
-        console.log(response.data);
+        // console.log(response.data);
 
         setQuizzes(response.data);
       } catch (error) {
@@ -67,7 +67,7 @@ function TeacherDashboard() {
 
   useEffect(() => {
     async function getSubjectData(token) {
-      console.log(token);
+      // console.log(token);
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/subject`,
         {
@@ -76,7 +76,7 @@ function TeacherDashboard() {
           },
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       setTeacherAdminId(response.data.teacherAdminId);
       setSubjectId(response.data);
     }
@@ -101,7 +101,7 @@ function TeacherDashboard() {
         return <Attendance subjectId={subjectId} />;
 
       case "quizzes":
-        console.log(subjectId);
+        // console.log(subjectId);
         return (
           <Quizzes
             quizzes={quizzes}

@@ -6,11 +6,11 @@ const path = require("path");
 exports.uploadAssignment = async (req, res) => {
   try {
     const { subjectId, std_class, teacherAdminId } = req.body;
-    console.log(
-      subjectId,
-      req.file.originalname,
-      `/uploads/${req.file.filename}`
-    );
+    // console.log(
+    //   subjectId,
+    //   req.file.originalname,
+    //   `/uploads/${req.file.filename}`
+    // );
 
     if (!subjectId) {
       return res.status(400).json({ message: "Subject ID is required" });
@@ -24,7 +24,7 @@ exports.uploadAssignment = async (req, res) => {
       fileUrl: `/uploads/${req.file.filename}`,
     });
 
-    console.log(newAssignment);
+    // console.log(newAssignment);
 
     await newAssignment.save();
     res.status(201).json(newAssignment);
@@ -38,7 +38,7 @@ exports.uploadAssignment = async (req, res) => {
 exports.getAssignmentsBySubjectId = async (req, res) => {
   try {
     const { subjectId } = req.query;
-    console.log({ subjectId });
+    // console.log({ subjectId });
 
     const assignments = await Assignment.find({ subjectId });
 
@@ -51,13 +51,13 @@ exports.getAssignmentsBySubjectId = async (req, res) => {
 exports.getAssignmentsByClassAndTeacherAdminId = async (req, res) => {
   try {
     const { std_class, teacherAdminId } = req.query;
-    console.log(std_class, teacherAdminId);
+    // console.log(std_class, teacherAdminId);
 
     const assignments = await Assignment.find({
       $and: [{ std_class: std_class }, { teacherAdminId: teacherAdminId }],
     });
 
-    console.log(assignments);
+    // console.log(assignments);
 
     res.status(200).json(assignments);
   } catch (error) {

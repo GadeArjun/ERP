@@ -3,11 +3,12 @@ const jwt = require("jsonwebtoken");
 const { Teacher } = require("../models/teacher");
 const { CollegeAdmin } = require("../models/collegeAdmin");
 const { TeacherAdmin } = require("../models/teacherAdmin");
+const { sendMail } = require("./sendMail");
 
 exports.createTeacher = async (req, res) => {
   try {
     const teacherData = req.body;
-    console.log(teacherData);
+    // console.log(teacherData);
 
     const salt = await bcrypt.genSalt(10);
     teacherData.password = await bcrypt.hash(teacherData.password, salt);
@@ -71,11 +72,11 @@ exports.teacherLogin = async (req, res) => {
 exports.getAllTeachers = async (req, res) => {
   try {
     const { collegeId, teacherAdminId } = req.user;
-    console.log(req.user);
+    // console.log(req.user);
 
     const collegeAdminData = await CollegeAdmin.findOne({ _id: collegeId });
 
-    console.log({ collegeAdminData });
+    // console.log({ collegeAdminData });
 
     const teacherAdminData = await TeacherAdmin.findOne({
       _id: teacherAdminId,

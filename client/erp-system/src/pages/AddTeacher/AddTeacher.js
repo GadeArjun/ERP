@@ -31,26 +31,29 @@ function AddTeacher() {
 
       const subjectCode = teacherData.subjectCode;
 
+      // console.log(subjects);
+      
+
       const subjectId = subjects.filter(
-        (sub) => sub.subjectCode === subjectCode
+        (sub) => sub.subjectCode.replace(userData?._id , "") === subjectCode
       );
 
-      console.log(subjectId[0], userData, collegeAdminId);
+      // console.log(subjectId[0], userData, collegeAdminId);
 
       const updatedTeachersData = {
         ...teacherData,
-        collegeAdminId: collegeAdminId._id,
+        collegeAdminId: collegeAdminId?._id,
         teacherAdminId: userData._id,
         subjectId: subjectId[0]._id,
       };
-      console.log(updatedTeachersData);
+      // console.log(updatedTeachersData);
 
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/teacher`,
         updatedTeachersData
       );
 
-      console.log(response.data);
+      // console.log(response.data);
       if (response.status === 201) {
         alert("Teacher add succefully.");
       }
@@ -74,12 +77,12 @@ function AddTeacher() {
     }
   };
 
-  console.log({ token });
+  // console.log({ token });
 
   useEffect(() => {
     async function fetchSubject(token) {
       try {
-        console.log({ token });
+        // console.log({ token });
 
         const teachersResponse = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/teachers`,
@@ -89,15 +92,15 @@ function AddTeacher() {
             },
           }
         );
-        console.log(teachersResponse.data);
+        // console.log(teachersResponse.data);
         setCollegeAdminId(teachersResponse.data.collegeAdminData);
         setUserData(teachersResponse.data.teacherAdminData);
 
-        console.log(teachersResponse.data);
+        // console.log(teachersResponse.data);
 
         const userId = teachersResponse.data.teacherAdminData._id;
 
-        console.log({ userId });
+        // console.log({ userId });
 
         const subjectResponse = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/subjects`,
@@ -107,7 +110,7 @@ function AddTeacher() {
         );
         setSubjects(subjectResponse.data);
 
-        console.log(subjects);
+        // console.log(subjects);
       } catch (err) {
         console.log({ err });
       }

@@ -18,19 +18,19 @@ function ParentSignIn() {
       );
 
       alert(response.data.message);
-      console.log(response.data);
+      // console.log(response.data);
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", "Parent");
 
-      console.log(response);
+      // console.log(response);
       navigate("/dashboard");
     } catch (err) {
       alert(err.message);
       console.log(err);
     }
 
-    console.log("Parent Sign In:", { email, password });
+    // console.log("Parent Sign In:", { email, password });
   };
 
   return (

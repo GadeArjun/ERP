@@ -20,22 +20,22 @@ function TeacherHome({ quizzes, std_class, teacherAdminId, subjectId }) {
     // Ensure the quiz start date is today or later
     const today = new Date();
     const selectedDate = new Date(quizStartDate);
-    console.log(today, selectedDate, selectedDate < today);
+    // console.log(today, selectedDate, selectedDate < today);
 
     if (selectedDate < today) {
       alert("Quiz start date must be later than today's date.");
       return;
     }
 
-    console.log({
-      quizId: selectedQuiz,
-      availabilityTime,
-      quizDuration,
-      quizStartDate,
-      std_class,
-      teacherAdminId,
-      subjectId,
-    });
+    // console.log({
+    //   quizId: selectedQuiz,
+    //   availabilityTime,
+    //   quizDuration,
+    //   quizStartDate,
+    //   std_class,
+    //   teacherAdminId,
+    //   subjectId,
+    // });
 
     // API call to schedule quiz
     try {
@@ -52,7 +52,7 @@ function TeacherHome({ quizzes, std_class, teacherAdminId, subjectId }) {
         }
       );
 
-      console.log(response);
+      // console.log(response);
 
       if (response.status === 201) {
         alert("Quiz scheduled successfully!");

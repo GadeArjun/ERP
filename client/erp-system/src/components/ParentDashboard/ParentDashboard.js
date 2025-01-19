@@ -4,7 +4,7 @@ import axios from "axios";
 
 function ParentDashboard() {
   const token = localStorage.getItem("token");
-  console.log(token);
+  // console.log(token);
   const [subjects, setSubjects] = useState([]);
   const [attendance, setAttendance] = useState([]);
   const [totalAttendanceData, setTotalAttendanceData] = useState([]);
@@ -21,8 +21,9 @@ function ParentDashboard() {
             },
           }
         );
-        console.log(response?.data);
-        setStudent(response?.data.student);
+        setStudent(response?.data?.student);
+        // console.log(response?.data);
+        
         setSubjects(response?.data?.subjects);
         setAttendance(response?.data?.attendance);
       } catch (error) {
@@ -43,7 +44,7 @@ function ParentDashboard() {
                 params: { subjectId: subject?._id },
               }
             );
-            console.log(response);
+            // console.log(response);
 
             return {
               subjectId: subject?._id,
@@ -53,7 +54,7 @@ function ParentDashboard() {
         );
 
         // Store all the responses in the state
-        console.log({ responses });
+        // console.log({ responses });
         setTotalAttendanceData(responses);
       } catch (err) {
         console.error("Error fetching attendance data:", err);
@@ -64,7 +65,7 @@ function ParentDashboard() {
       getAttendanceBySubjectId(subjects);
     }
   }, [subjects]);
-  console.log(totalAttendanceData);
+  // console.log(totalAttendanceData);
 
   return (
     <div className="parent-dashboard-container">
@@ -79,7 +80,7 @@ function ParentDashboard() {
             <div className="progress-container">
               {subjects?.map((subject, idx) => (
                 <div className="subject-progress" key={idx}>
-                  <h3 className="subject-name">{subject?.subjectName}</h3>
+                  <h3 className="subject-name">{subject?.subjectName.replace(subject?.teacherAdminId , "")}</h3>
                   <div className="progress-bar-container">
                     <p>Attendance:</p>
                     <div className="progress-bar">

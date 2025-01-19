@@ -7,7 +7,7 @@ import ParentDashboard from "../../components/ParentDashboard/ParentDashboard";
 
 export default function Dashboard() {
   const role = localStorage.getItem("role");
-  console.log(role);
+  // console.log(role);
 
   switch (role) {
     case "CollegeAdmin":

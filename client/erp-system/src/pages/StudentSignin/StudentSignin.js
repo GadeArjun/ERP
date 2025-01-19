@@ -17,21 +17,21 @@ function StudentSignin() {
       );
 
       alert(response.data.message);
-      console.log(response.data);
+      // console.log(response.data);
 
       localStorage.setItem("name", response.data.student.name);
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.student.role);
 
-      console.log(response);
+      // console.log(response);
       navigate("/dashboard");
     } catch (err) {
       alert(err.message);
       console.log(err);
     }
 
-    console.log("Student Sign In:", { email, password });
+    // console.log("Student Sign In:", { email, password });
   };
 
   return (

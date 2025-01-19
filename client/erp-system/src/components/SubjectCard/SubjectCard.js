@@ -3,19 +3,20 @@ import "./SubjectCard.css";
 
 function SubjectCard({
   subjectName,
-  subjectId,
+  teacherAdminId,
   setSelectedSubjectId,
+  subjectId,
   setIsSelect,
 }) {
   const handleCardClick = (subjectId) => {
     setSelectedSubjectId(subjectId);
-    console.log(subjectId);
+    // console.log(subjectId);
     setIsSelect(true);
   };
 
   return (
     <div className="subject-card" onClick={() => handleCardClick(subjectId)}>
-      <h3>{subjectName.replace(subjectId, "")}</h3>
+      <h3>{subjectName.replace(teacherAdminId, "")}</h3>
     </div>
   );
 }

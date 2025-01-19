@@ -3,13 +3,14 @@ const { Subject } = require("../models/subject");
 const { StudentAttendance } = require("../models/studentAttendance");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { sendMail } = require("./sendMail");
 
 // Create Student with bcrypt
 exports.createStudent = async (req, res) => {
   try {
     const studentData = req.body;
 
-    console.log({ studentData });
+    // console.log({ studentData });
 
     // Hash the password using bcrypt
     const hashedPassword = await bcrypt.hash(studentData.password, 10); // 10 is the salt rounds
@@ -102,7 +103,7 @@ exports.getAllStundetsByTeacherAdminIdAndClass = async (req, res) => {
       $and: [{ teacherAdminId: teacherAdminId }, { class: std_class }],
     });
 
-    console.log(students);
+    // console.log(students);
 
     res.status(200).json(students);
     //  console.log(req.query, req.query.userId);
@@ -124,9 +125,10 @@ exports.getStudentData = async (req, res) => {
       ],
     });
 
+    
     const attendance = await StudentAttendance.findOne({ studentId });
 
-    console.log({ subjects });
+    // console.log({ subjects });
     res.status(200).json({ student, subjects, attendance });
   } catch (err) {
     res.status(500).json(err);

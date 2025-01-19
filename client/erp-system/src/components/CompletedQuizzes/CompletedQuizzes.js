@@ -2,7 +2,7 @@ import React from "react";
 import "./CompletedQuizzes.css";
 
 function CompletedQuizzes({ completedQuizzes, quizzes, subjectId }) {
-  console.log(completedQuizzes, quizzes);
+  // console.log(completedQuizzes, quizzes);
 
   return (
     <div className="completed-quizzes-container">

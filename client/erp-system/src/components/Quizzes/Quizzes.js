@@ -63,7 +63,7 @@ function Quizzes({ setActiveTab, subjectId, setQuizzes, quizzes }) {
           teacherAdminId: subjectId.teacherAdminId,
         }
       );
-      console.log(response);
+      // console.log(response);
 
       setQuizzes([...quizzes, response.data.quiz]);
 

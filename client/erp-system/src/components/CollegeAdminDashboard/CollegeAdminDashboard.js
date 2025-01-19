@@ -15,7 +15,7 @@ function CollegeAdminDashboard() {
   useEffect(() => {
     async function fetchAdminTeacherAndStudentData(token) {
       try {
-        console.log({ token });
+        // console.log({ token });
 
         const response = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/admin-teachers`,
@@ -28,7 +28,7 @@ function CollegeAdminDashboard() {
         // console.log(response.data.teachers);
         setTeacherData(response.data.teacherAdminData);
         setUserData(response.data.collegeAdminData);
-        console.log({ teacherData });
+        // console.log({ teacherData });
       } catch (err) {
         console.log({ err });
       }
@@ -37,12 +37,12 @@ function CollegeAdminDashboard() {
   }, [token]);
 
   const handleRemoveTeacher = async (teacherId) => {
-    console.log(teacherId);
+    // console.log(teacherId);
     setTeacherData(() =>
       teacherData.filter((teacher) => teacher._id !== teacherId)
     );
 
-    console.log(teacherData);
+    // console.log(teacherData);
   };
 
   return (

@@ -4,7 +4,7 @@ import axios from "axios";
 
 function Students({ studentsData, allPreviousQuizzes }) {
   // This will store the visibility state for each student's details
-  console.log(allPreviousQuizzes);
+  // console.log(allPreviousQuizzes);
 
   const [showDetails, setShowDetails] = useState({});
   const [loading, setLoading] = useState(false);
@@ -33,7 +33,7 @@ function Students({ studentsData, allPreviousQuizzes }) {
           params: { studentId },
         }
       );
-      console.log(response);
+      // console.log(response);
       setStudentQuizPerformance(response.data);
     } catch (err) {
       console.log(err);

@@ -30,7 +30,7 @@ function TeacherAdminSingin() {
       localStorage.setItem("role", response.data.teacherAdmin.role);
       localStorage.setItem("token", response.data.token);
       navigate("/dashboard");
-      console.log(response.data);
+      // console.log(response.data);
     } catch (err) {
       console.error(err);
       alert("Login failed. Please check your credentials.");

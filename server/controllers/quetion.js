@@ -3,7 +3,7 @@ const { Question } = require("../models/quetions");
 // Add a question
 exports.addQuestion = async (req, res) => {
   try {
-    console.log("add quetion");
+    // console.log("add quetion");
 
     const { question, userId } = req.body;
     const newQuestion = new Question({ question, userId });
@@ -17,7 +17,7 @@ exports.addQuestion = async (req, res) => {
 // Get all questions
 exports.getQuestions = async (req, res) => {
   try {
-    console.log("get quetions");
+    // console.log("get quetions");
     
     const questions = await Question.find({});
     res.status(200).json(questions);
@@ -29,7 +29,7 @@ exports.getQuestions = async (req, res) => {
 // Add an answer
 exports.addAnswer = async (req, res) => {
   try {
-    console.log("add answer");
+    // console.log("add answer");
     
     const { questionId, userId, answer } = req.body;
     const question = await Question.findById(questionId);

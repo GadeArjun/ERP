@@ -47,8 +47,8 @@ function AddSubjects() {
     try {
       e.preventDefault();
 
-      console.log(subjectDetails.subjectName.trim() + userData._id);
-      console.log(subjectDetails.subjectCode.trim() + userData._id);
+      // console.log(subjectDetails.subjectName.trim() + userData._id);
+      // console.log(subjectDetails.subjectCode.trim() + userData._id);
 
       const updatedSubjectDetails = {
         ...subjectDetails,
@@ -57,13 +57,13 @@ function AddSubjects() {
         teacherAdminId: userData._id,
       };
 
-      console.log({ updatedSubjectDetails });
+      // console.log({ updatedSubjectDetails });
 
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/subject`,
         updatedSubjectDetails
       );
-      console.log(response.data);
+      // console.log(response.data);
       alert(response.data);
     } catch (err) {
       console.log(err);

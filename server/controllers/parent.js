@@ -1,12 +1,13 @@
 const { Parent } = require("../models/parent");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { sendMail } = require("./sendMail");
 
 // Create Parent with bcrypt
 exports.createParent = async (req, res) => {
   try {
     const parentData = req.body;
-    console.log({ parentData });
+    // console.log({ parentData });
 
     // Hash the password using bcrypt
     const hashedPassword = await bcrypt.hash(parentData.password, 10); // 10 is the salt rounds

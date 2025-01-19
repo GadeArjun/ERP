@@ -2,7 +2,7 @@ const { Subject } = require("../models/subject");
 
 exports.addSubject = async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
 
     const subject = new Subject(req.body);
     await subject.save();
@@ -22,7 +22,7 @@ exports.getSubjectsByTeacherAdminId = async (req, res) => {
   try {
     const teacherAdminId = req.query.userId;
 
-    console.log(teacherAdminId, req.query);
+    // console.log(teacherAdminId, req.query);
     const subjects = await Subject.find({ teacherAdminId: teacherAdminId });
     res.status(201).json(subjects);
   } catch (err) {
@@ -37,7 +37,7 @@ exports.getSubjectDetailsByTeacherId = async (req, res) => {
 
     const subjectData = await Subject.findOne({ _id: subjectId });
 
-    console.log(req.user);
+    // console.log(req.user);
     res.status(200).json(subjectData);
   } catch (err) {
     res.status(500).json("Failed to get subject id");
@@ -46,7 +46,7 @@ exports.getSubjectDetailsByTeacherId = async (req, res) => {
 
 exports.getSubjectsByTeacherAdminIdAndClass = async (req, res) => {
   try {
-    console.log(req.user);
+    // console.log(req.user);
     const { std_class, teacherAdminId } = req.user;
     const subjects = await Subject.find({
       $and: [{ class: std_class }, { teacherAdminId: teacherAdminId }],

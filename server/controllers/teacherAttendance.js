@@ -32,11 +32,11 @@ exports.takeAttendance = async (req, res) => {
 exports.getAttendanceBySubjectId = async (req, res) => {
   try {
     const { subjectId } = req.query;
-    console.log(subjectId);
+    // console.log(subjectId);
 
     // Find the attendance record for the given subject ID
     const attendance = await TeacherAttendance.findOne({ subjectId });
-    console.log({ attendance });
+    // console.log({ attendance });
 
     res.status(200).json(attendance);
   } catch (err) {

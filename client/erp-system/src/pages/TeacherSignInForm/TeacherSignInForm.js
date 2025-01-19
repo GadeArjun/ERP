@@ -23,7 +23,7 @@ function TeacherSignInForm() {
         formData
       );
 
-      console.log(response, response.data.token);
+      // console.log(response, response.data.token);
       setUserData(response.data.teacher);
 
       localStorage.setItem("token", response.data.token);
@@ -34,11 +34,11 @@ function TeacherSignInForm() {
       alert(response.data.msg);
       navigate("/dashboard");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       alert(err.response.data);
     }
 
-    console.log("Form submitted:", formData);
+    // console.log("Form submitted:", formData);
   };
 
   return (

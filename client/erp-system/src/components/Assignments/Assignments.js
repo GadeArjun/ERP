@@ -18,7 +18,7 @@ function Assignments({ std_class, subjectId, teacherAdminId }) {
           }
         ); // Replace with your API endpoint
 
-        console.log(response.data);
+        // console.log(response.data);
 
         setAssignments(response.data);
       } catch (error) {
@@ -61,7 +61,7 @@ function Assignments({ std_class, subjectId, teacherAdminId }) {
         formData
       );
 
-      console.log(response);
+      // console.log(response);
 
       if (response.status === 201) {
         alert("Assignment uploaded successfully!");

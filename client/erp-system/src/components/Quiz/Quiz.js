@@ -10,7 +10,7 @@ function Quiz({
   setIsQuizStarted,
   studentId,
 }) {
-  console.log(quizDuration);
+  // console.log(quizDuration);
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -77,7 +77,7 @@ function Quiz({
           score,
         }
       );
-      console.log(response);
+      // console.log(response);
     } catch (err) {
       console.log(err);
     }

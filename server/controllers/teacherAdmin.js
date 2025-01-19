@@ -82,7 +82,7 @@ exports.teacherAdminLogin = async (req, res) => {
 exports.getAllAdminTeachers = async (req, res) => {
   try {
     const { collegeId } = req.user;
-    console.log(req.user, collegeId);
+    // console.log(req.user, collegeId);
 
     const collegeAdminData = await CollegeAdmin.findOne({ _id: collegeId });
     const teacherAdminData = await TeacherAdmin.find({ collegeId: collegeId });
@@ -100,7 +100,7 @@ exports.getAllAdminTeachers = async (req, res) => {
 exports.findAdminTeacherById = async (req, res) => {
   try {
     const { teacherAdminId } = req.user;
-    console.log(req.user, teacherAdminId);
+    // console.log(req.user, teacherAdminId);
     const teacherAdminData = await TeacherAdmin.findOne({
       _id: teacherAdminId,
     });

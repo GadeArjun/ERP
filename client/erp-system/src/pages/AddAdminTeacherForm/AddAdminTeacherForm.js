@@ -50,21 +50,21 @@ function AddAdminTeacherForm() {
       collegeId: userData?._id,
     };
 
-    console.log(updatedTeacherDetails);
+    // console.log(updatedTeacherDetails);
 
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/teacher-admin`,
         updatedTeacherDetails
       );
-      console.log(response.data);
+      // console.log(response.data);
       alert(response.data.message);
     } catch (err) {
       console.log(err);
       alert(err?.response?.data?.message);
     }
 
-    console.log("Teacher added:", updatedTeacherDetails);
+    // console.log("Teacher added:", updatedTeacherDetails);
   };
 
   return (

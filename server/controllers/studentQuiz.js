@@ -4,7 +4,7 @@ const { StudentQuiz } = require("../models/studentQuiz");
 exports.addQuizResult = async (req, res) => {
   try {
     const { studentId, quizId, score } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     // return res.json(req.body);
     await StudentQuiz.findOneAndUpdate(
       { studentId },

@@ -6,7 +6,7 @@ exports.addQuiz = async (req, res) => {
     // Extract quiz data from the request body
     const { title, subjectId, questions, teacherAdminId } = req.body;
 
-    console.log(req.body);
+    // console.log(req.body);
 
     // Validate that all fields are provided
     if (
@@ -86,7 +86,7 @@ exports.getCompletedQuizzeByTeacherAdminId = async (req, res) => {
       createdAt: -1,
     });
     res.status(200).json(quizzes);
-    console.log(quizzes.length);
+    // console.log(quizzes.length);
     
   } catch (err) {
     res.status(500).json({ msg: "Error: server error", err: err });

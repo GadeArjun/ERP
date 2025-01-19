@@ -22,7 +22,7 @@ const StudentAttendanceScanner = ({
         (decodedText) => {
           try {
             setScannedData(decodedText);
-            console.log(decodedText);
+            // console.log(decodedText);
             sendAttendance(decodedText); // Call attendance function
           } catch (err) {
             console.error("Error handling QR data:", err);
@@ -69,7 +69,7 @@ const StudentAttendanceScanner = ({
             subjectId: subjectId,
           }
         );
-        console.log(response);
+        // console.log(response);
 
         if (response.status === 201) {
           alert(response.data.message);

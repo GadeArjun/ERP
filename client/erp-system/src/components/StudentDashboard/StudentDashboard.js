@@ -45,7 +45,7 @@ function StudentDashboard() {
             },
           }
         );
-        console.log(response.data);
+        // console.log(response.data);
         setUserData(response.data);
       } catch (err) {
         console.log(err);
@@ -66,7 +66,7 @@ function StudentDashboard() {
             },
           }
         );
-        console.log(response.data);
+        // console.log(response.data);
 
         setSubjects(response.data);
       } catch (error) {
@@ -113,7 +113,7 @@ function StudentDashboard() {
           }
         );
 
-        console.log(response.data);
+        // console.log(response.data);
 
         setQuizzes(response.data);
       } catch (error) {
@@ -128,7 +128,7 @@ function StudentDashboard() {
     async function getStudentCompleteQuizeScore(studentId) {
       // const StudentCompleteQuizeScore = 0;
       try {
-        console.log(studentId);
+        // console.log(studentId);
 
         const response = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/student-quiz-data`,
@@ -136,8 +136,8 @@ function StudentDashboard() {
             params: { studentId },
           }
         );
-        console.log(response.data.quizzes);
-        console.log(response.data);
+        // console.log(response.data.quizzes);
+        // console.log(response.data);
         setCompletedQuizzes(response.data.quizzes);
       } catch (err) {
         console.log(err);
@@ -174,7 +174,7 @@ function StudentDashboard() {
         const filteredAssignment = assignments.filter(
           (assignment) => assignment.subjectId === selectedSubjectId
         );
-        console.log(filteredAssignment, assignments);
+        // console.log(filteredAssignment, assignments);
         setUpdatedAssignments(filteredAssignment);
 
         const filteredScheduleQuize = scheduleQuizezes.filter(
@@ -182,7 +182,7 @@ function StudentDashboard() {
         );
 
         setFilteredScheduleQuizzes(filteredScheduleQuize);
-        console.log(filteredScheduleQuize);
+        // console.log(filteredScheduleQuize);
       } catch (err) {
         console.log(err);
       }
@@ -196,7 +196,7 @@ function StudentDashboard() {
   useEffect(() => {
     try {
       const quizToStart = quizzes.filter((quiz) => quiz._id === selectedQuize);
-      console.log(quizToStart);
+      // console.log(quizToStart);
       setSelectedQuizeToStart(quizToStart);
     } catch (err) {
       console.log(err);
@@ -216,6 +216,7 @@ function StudentDashboard() {
             <SubjectCard
               setIsSelect={setIsSelect}
               key={subject._id}
+              teacherAdminId={subjects[0]?.teacherAdminId}
               subjectId={subject._id}
               subjectName={subject.subjectName}
               setSelectedSubjectId={setSelectedSubjectId}

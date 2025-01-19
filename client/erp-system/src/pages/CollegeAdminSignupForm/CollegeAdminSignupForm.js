@@ -38,9 +38,9 @@ function CollegeAdminSignupForm() {
       } else {
         alert("Error while registration try later.");
       }
-      console.log("Form submitted:", response.data);
+      // console.log("Form submitted:", response.data);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       console.log(error);
       alert(error?.response?.data);
     }

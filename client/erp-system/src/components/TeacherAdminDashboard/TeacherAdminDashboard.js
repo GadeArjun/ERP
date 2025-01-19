@@ -4,6 +4,7 @@ import "./TeacherAdminDashboard.css";
 import axios from "axios";
 import userDataContext from "../../context/userDataContext";
 import AiFloatingButton from "../AiFloatingButton/AiFloatingButton";
+import DetailContainer from "../DetailContainer/DetailContainer";
 
 function TeacherAdminDashboard() {
   const [teachersData, setTeacherData] = useState([]);
@@ -13,7 +14,7 @@ function TeacherAdminDashboard() {
   const { userData, setUserData } = useContext(userDataContext);
 
   const token = localStorage.getItem("token");
-  console.log({ token });
+  // console.log({ token });
 
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -24,7 +25,7 @@ function TeacherAdminDashboard() {
   useEffect(() => {
     async function fetchSubjectTeacherAndStudentData(token) {
       try {
-        console.log({ token });
+        // console.log({ token });
 
         const teachersResponse = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/teachers`,
@@ -35,13 +36,13 @@ function TeacherAdminDashboard() {
           }
         );
 
-        console.log(teachersResponse.data);
+        // console.log(teachersResponse.data);
         setTeacherData(teachersResponse.data.teacherData);
         setUserData(teachersResponse.data.teacherAdminData);
 
         const userId = teachersResponse.data.teacherAdminData._id;
 
-        console.log({ userId });
+        // console.log({ userId });
 
         const subjectResponse = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/subjects`,
@@ -52,7 +53,7 @@ function TeacherAdminDashboard() {
 
         setSubjects(subjectResponse.data);
 
-        console.log({ subjectResponse });
+        // console.log({ subjectResponse });
 
         const studentResponse = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/students`,
@@ -62,14 +63,14 @@ function TeacherAdminDashboard() {
         );
         setStudents(studentResponse.data);
 
-        console.log(studentResponse);
+        // console.log(studentResponse);
       } catch (err) {
         console.log({ err });
       }
     }
     fetchSubjectTeacherAndStudentData(token);
   }, [token]);
-  console.log(subjects);
+  // console.log(subjects);
 
   return (
     <>
@@ -107,26 +108,7 @@ function TeacherAdminDashboard() {
         </div>
       </div>
 
-      <div className="detail-container">
-        <h3>Subjects</h3>
-        {subjects?.map((sub, index) => {
-          return (
-            <p key={index}>{sub.subjectName.replace(userData?._id, "")}</p>
-          );
-        })}
-
-        <h3>Teachers</h3>
-
-        {teachersData?.map((teacher, index) => {
-          return <p key={index}>{teacher.name}</p>;
-        })}
-
-        <h3>Students</h3>
-
-        {students?.map((std, index) => {
-          return <p key={index}>{std.name}</p>;
-        })}
-      </div>
+     <DetailContainer subjects={subjects} teachersData={teachersData}  students={students}/>
       <AiFloatingButton />
     </>
   );

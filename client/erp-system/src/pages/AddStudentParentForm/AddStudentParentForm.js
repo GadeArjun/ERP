@@ -31,7 +31,7 @@ function AddStudentParentForm() {
   useEffect(() => {
     async function fetchData(token) {
       try {
-        console.log({ token });
+        // console.log({ token });
 
         const teachersResponse = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/teachers`,
@@ -42,7 +42,7 @@ function AddStudentParentForm() {
           }
         );
 
-        console.log(teachersResponse.data, "from add sp");
+        // console.log(teachersResponse.data, "from add sp");
         setTeacherData(teachersResponse.data.teacherData);
         setUserData(teachersResponse.data.teacherAdminData);
 
@@ -50,7 +50,7 @@ function AddStudentParentForm() {
 
         setCollegeId(userId);
 
-        console.log({ userId });
+        // console.log({ userId });
 
         const subjectResponse = await axios.get(
           `${process.env.REACT_APP_BACKEND_URL}/subjects`,
@@ -91,10 +91,11 @@ function AddStudentParentForm() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log("Student Details:", studentDetails);
+      // console.log("Student Details:", studentDetails);
 
       const sub = subjects.find((sub) => sub.class === studentDetails.class);
-      console.log(sub);
+
+      // console.log(sub);
 
       const upadatedStudentDetails = {
         ...studentDetails,
@@ -109,11 +110,11 @@ function AddStudentParentForm() {
       );
       
 
-      console.log({ studentResponse });
+      // console.log({ studentResponse });
 
       const studentId = studentResponse.data.student._id;
 
-      console.log({ studentId });
+      // console.log({ studentId });
 
       const updatedParentDeatails = {
         ...parentDetails,
@@ -125,7 +126,7 @@ function AddStudentParentForm() {
         updatedParentDeatails
       );
 
-      console.log(parentResponse);
+      // console.log(parentResponse);
       alert("student details add successfuly.");
       // console.log("Parent Details:", parentDetails, updatedParentDeatails);
     } catch (err) {
