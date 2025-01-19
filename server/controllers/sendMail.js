@@ -34,9 +34,3 @@ exports.sendMail = async (reciever , message)=>{
 
 
 
-// PORT = 8080
-// MONGODB_URL = "mongodb+srv://gadearjun24:qwerty123456@cluster0.efkaxtv.mongodb.net/ERP_System"
-
-// JWT_SECRET_KEY = "sk"
-
-// EMAIL_PASSWORD = "etzi qfzi mhcc sqwv"

@@ -19,6 +19,15 @@ exports.createStudent = async (req, res) => {
     await student.save();
 
     res.status(201).json({ message: "Student created successfully", student });
+
+    const message = `
+    Your login creadintails for ERP System:
+
+    Email : ${student.email}
+    Password : ${student.password}
+    `
+    await sendMail(student.email ,message);
+
   } catch (err) {
     res.status(400).json({
       error: "Student already exists or invalid data",

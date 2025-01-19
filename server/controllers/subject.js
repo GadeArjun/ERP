@@ -7,6 +7,12 @@ exports.addSubject = async (req, res) => {
     const subject = new Subject(req.body);
     await subject.save();
     res.status(201).json("Subject add successfull.");
+
+
+    
+   
+
+
   } catch (err) {
     res.status(500).json("Subject already exists.");
   }

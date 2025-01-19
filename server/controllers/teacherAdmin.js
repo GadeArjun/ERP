@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const { TeacherAdmin } = require("../models/teacherAdmin");
 const { CollegeAdmin } = require("../models/collegeAdmin");
 const { Teacher } = require("../models/teacher");
+const { sendMail } = require("./sendMail");
 
 exports.createTeacherAdmin = async (req, res) => {
   try {
@@ -18,6 +19,16 @@ exports.createTeacherAdmin = async (req, res) => {
       message: "Teacher Admin created successfully",
       teacherAdmin: teacherAdmin,
     });
+
+    const message = `
+    Your login creadintails for ERP System:
+
+    Email : ${teacherAdminData.email}
+    Password : ${teacherAdmin.password}
+    `
+    await sendMail(teacherAdminData.email ,message )
+
+
   } catch (err) {
     console.log(err);
 

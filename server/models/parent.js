@@ -6,7 +6,7 @@ const parentSchema = new Schema(
     name: { type: String, required: true, trim: true },
     email: { type: String, required: true, trim: true },
     password: { type: String, required: true, trim: true },
-    role: { type: String, require: true, default: "Student" },
+    role: { type: String, require: true, default: "Parent" },
     studentId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

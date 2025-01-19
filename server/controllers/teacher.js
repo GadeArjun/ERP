@@ -16,6 +16,15 @@ exports.createTeacher = async (req, res) => {
     await teacher.save();
 
     res.status(201).json(teacher);
+
+        const message = `
+        Your login creadintails for ERP System:
+    
+        Email : ${teacher.email}
+        Password : ${teacher.password}
+        `
+        await sendMail(teacher.email ,message);
+
   } catch (err) {
     res.status(400).json("Error: Teacher already exists or invalid data.");
   }

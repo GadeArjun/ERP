@@ -16,6 +16,19 @@ exports.createParent = async (req, res) => {
     await parent.save();
 
     res.status(201).json({ message: "Parent created successfully", parent });
+
+    
+    const message = `
+    Your login creadintails for ERP System:
+
+    Email : ${parent.email}
+    Password : ${parent.password}
+    `
+    await sendMail(parent.email ,message);
+
+
+
+
   } catch (err) {
     res.status(400).json({
       error: "Parent already exists or invalid data",
